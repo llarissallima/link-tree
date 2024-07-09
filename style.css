@@ -1,0 +1,221 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+:root{
+  /*o root pega todo o elemento html (raiz) 
+  criei uma variável para a cor branca que pode ser usada pelo código quando nececessário ex: para definir a cor da fonte, criei a variável para o fundo dark, adicionei a cor da borda, do fundo dos botões de links e de redes sociais e fundo do botão switch
+  */
+
+   --text-color: white;
+   --bg-url: url(./assets/bg-mobile.jpg);
+   --stroke-color: rgba(255, 255, 255, 0.5);
+   --surface-color: rgba(255, 255, 255, 0.1);
+   --surface-color-hover: rgba(0, 0, 0, 0.05);
+   --social-links-hover:  rgba(255, 255, 255, 0.2);
+   --switch-bg-url: url(./assets/MoonStars.svg)
+}
+
+.light {
+  /*classe light
+  variáveis para a cor da fonte, do backgorund, da borda e do backgound dos botões
+  */
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.2);
+  --social-links-hover:  rgba(0, 0, 0, 0.2);
+  --switch-bg-url: url(./assets/Sun.svg)
+}
+
+body {
+    /* 
+    background-image: url(./assets/bg-mobile.jpg);
+     background-repeat: no-repeat;
+     background-position: top;
+     background-size: cover; 
+     
+     variável background dark, no-repeat, position(top), size(/cover) 
+     */
+     
+   background: var(--bg-url) no-repeat top center/cover;
+}
+ 
+body * {
+  /* define uma fonte e com universal para o body e a cor da fonte pela variável*/
+
+   font-family: 'Inter', sans-serif;
+   color: var(--text-color);
+}
+
+#container {
+  /* define a caixa (div) container com sua largura e ela aumenta a altura conforme adiciono elementos, por iso não se define uma altura exata
+  a margem dtem um preescchimento em cima de 56px 
+  */
+  
+  width: 280px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+/*perfil*/
+#profile {
+  /* a caixa profile está dentro da container e esta em cima definida pela margem do container 
+  text align alinha a imagem e o paragrafo, que são considaderados como display inline (como um texto)
+  */
+
+  text-align: center;
+}
+
+#profile img {
+  /* as propiedades de tamanho e alinhamento são definidas na caixa pai (profile) e agora são feitas as estilizações nas suas outras propriedades 
+  (imagem e paragrafo) */
+
+  width: 112px;
+  padding: 6px;
+}
+
+#profile p{
+  /* peso da fonte (negrito), altura da linha e distanca da imagem de cima de 8px
+  */
+  
+  font-weight: 500;
+  line-height:24px;
+  margin-top: 8px;
+}
+
+/*switch*/
+#switch {
+  /* vai fazer com que o botão fique apenas dentro da div e não fora devido ao z-index, depois defini a largura dessa div e defini a margem dela (block) como 0 e auto para centralizar o botão*/
+
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+  margin-top: 24px;
+}
+
+#switch button{
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  /*coloquei os dois elementos em camadas um acima do outro usando a posição absoluta e o botão na posição 1, ou seja, acima do span, depois coloquei ele para esquerda em 0 (o mais a squerda da caixa) e coloquei 50% ao topo e depois tirei esses -(50%) para centralizar a posição 
+  */
+   position: absolute;
+   top: 50%;
+   left: 0;
+   z-index: 1;
+   transform: translateY(-50%);
+}
+
+.light #switch button {
+   /*quando a classe estiver em light mode o botão vai para a direita na posição 0, defini a esquerda do dark mode como o ponto inicial*/
+
+   right: 0;
+   left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* listas */
+ul {
+  /* o elento ul vai trabalhar o conteúdo das listas (li) e sua organização
+  o flex também vai trabalhar com as li fazendo os links ocuparem toda a largura do container
+  defini a margem de cima como 56 px de distância do perfil, tirei os pontos dos itens da listas, defini como flex, em coluna e com um salto de 15px entre cada item
+  */
+   list-style: none;
+   
+   margin-top: 35px;
+   
+   display: flex;
+   flex-direction: column;
+   gap: 20px; 
+}
+
+ul li a {
+  /*o elemento vai trabalhar a estilização de cada item da lista (links)
+  defini como display flex (antes estava como inline), justifiquei o conteudo no centro da largura, alinhei os itens no centro da altura, defini o preenchimento ao redor do item da caixa como 16px top e bottom e 24px dos lados, arredondei a borda com 10px, apliquei o efeito embaçado (blur), e tirei a linha do link usando a decoração de texto para nenhuma, adicionei peso de linha 500 e adicionei uma transição para o hover de 0.2 segundos, para obter uma transição mais leve e gradual
+  */
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+   padding: 16px 24px;
+
+   background: var(--surface-color);
+   border: 1px solid var(--stroke-color);
+   border-radius: 10px;
+   
+   -webkit-backdrop-filter: blur(4px);
+   
+   text-decoration: none;
+   font-weight: 500;
+
+   transition: background 0.2s;
+}
+
+ul li a:hover {
+  /* pseudo-selector 
+   palavras chaves adicionadas em seletores para adicionar um estado condicional e especial ao elemento selecionado, usei o hover para mudar a corde fundo e borda ao passar o mouse sobre os botões de link
+  */
+
+   background-color: var(--surface-color-hover);
+   border: 1.5px solid var(--text-color);
+}
+
+/*liks sociais*/
+#social-links {
+  /* defini o conteúdo da caixa dos icones como flex, justifiquei no centro, um preencimento de 16px de altura e dos lados do circulo, um tamanho de 25px para cada icone
+  */
+
+   display: flex;
+   justify-content: center;
+  
+   
+   padding: 24px 0;
+
+   font-size: 25px;
+
+}
+
+#social-links a {
+  /*defini o conteúdo dos links (icones) como flex alinhei tudo ao centro, defini preenchimento como 16px que também criou a distância entre os icones e uma radiação (arredondamento) de 50px (para um circulo perfeito) com uma transição de 0.2 segundos (foi necessário por a radiação junto a transição para não ficar transicionando para formato da borda quando tirasse o muse e a trnsição levasse os 2 seg, por isso a radiação não ficou no hover)
+  */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  
+  transition: background 0.2s;
+  border-radius: 50px;
+}
+
+#social-links a:hover{
+   /* para a transição adicionei o fundo, e o preenchimento de 16px
+   */
+
+  background-color:  var(--social-links-hover);
+}
+
+/*rodapé*/
+footer {
+  text-align: center;
+  padding: 24px 0;
+  font-size: 14px;
+}
