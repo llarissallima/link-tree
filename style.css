@@ -53,13 +53,12 @@ body * {
 }
 
 #container {
-  /* define a caixa (div) container com sua largura e ela aumenta a altura conforme adiciono elementos, por iso não se define uma altura exata
-  a margem dtem um preescchimento em cima de 56px 
+  /* define a caixa (div) container com sua largura em 100% pra todo dispositivo com largura máxima de 588px (para não aumentar os elementos) e ela aumenta a altura conforme adiciono elementos, por iso não se define uma altura exata defini um margem em cima de 56px 
   */
   
-  width: 280px;
+  width: 100%;
+  max-width: 588px;
   margin: 56px auto 0px;
-  padding: 0 24px;
 }
 
 /*perfil*/
@@ -140,6 +139,7 @@ ul {
    list-style: none;
    
    margin-top: 35px;
+
    
    display: flex;
    flex-direction: column;
